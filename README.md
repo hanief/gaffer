@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gaffer
+
+A modern web application built with Next.js 15, React 18, and TypeScript, featuring AI-powered chat capabilities and authentication.
+
+## Features
+
+- 🔒 Secure authentication using NextAuth.js
+- 💬 AI-powered chat interface using OpenAI
+- 🎮 Interactive game UI component
+- 🎨 Modern UI with Tailwind CSS
+- 📱 Fully responsive design
+- 🚀 Built with Next.js 15 and React 18
+
+## Prerequisites
+
+- Node.js (LTS version recommended)
+- npm or yarn package manager
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd gaffer
+```
 
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+Create a `.env.local` file in the root directory and add your configuration:
+```env
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-secret-key
+OPENAI_API_KEY=your-openai-api-key
+```
+
+4. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run start` - Start the production server
+- `npm run lint` - Run ESLint for code linting
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `/src/app` - Next.js app router pages and API routes
+- `/src/components` - Reusable React components
+- `/public` - Static assets
+- `/src/app/api` - API routes for authentication and chat functionality
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js](https://nextjs.org/) - React framework
+- [React](https://reactjs.org/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [NextAuth.js](https://next-auth.js.org/) - Authentication
+- [OpenAI](https://openai.com/) - AI capabilities
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is private and proprietary.

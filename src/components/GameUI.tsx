@@ -3,7 +3,7 @@
 import { useChat } from 'ai/react';
 import { useState } from 'react';
 import { ChatSection } from '@llamaindex/chat-ui';
-
+import { useSession, signOut } from 'next-auth/react';
 interface GameState {
   manager: {
     name: string;
@@ -21,6 +21,9 @@ interface GameState {
 }
 
 export default function GameUI() {
+    const { data: session, status } = useSession();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const [gameState, setGameState] = useState<GameState>({
     manager: {
       name: '',
@@ -45,31 +48,39 @@ export default function GameUI() {
 
   return (
     <div className="flex flex-col h-screen">
-      <div className="bg-gray-800 text-white p-4">
+    <div className="bg-gray-800 text-white p-4">
         <div className="flex justify-between items-center">
-          <div>
+        <div>
             <h1 className="text-xl font-bold">Gaffer</h1>
             <p className="text-sm text-gray-400">
-              {gameState.manager.name ? `Manager: ${gameState.manager.name} | Club: ${gameState.manager.club}` : 'New Career'}
+            {gameState.manager.name ? `Manager: ${gameState.manager.name} | Club: ${gameState.manager.club}` : 'New Career'}
             </p>
-          </div>
-          <div className="text-right">
+        </div>
+        <div className="text-right flex align-center items-end gap-2">
             <p className="text-sm">{gameState.currentDate.toLocaleDateString()}</p>
             {gameState.nextMatch && (
-              <p className="text-sm text-yellow-400">
+            <p className="text-sm text-yellow-400">
                 Next Match: {gameState.nextMatch.opponent} ({gameState.nextMatch.competition})
-              </p>
+            </p>
             )}
-          </div>
+            {session && (
+              <button
+              onClick={() => signOut({ callbackUrl: '/login' })}
+              className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-600 hover:text-white"
+              role="menuitem"
+              >
+              Sign Out
+              </button>
+            )}
         </div>
-      </div>
-      
-      <div className="flex-1 overflow-hidden">
+        </div>
+    </div>
+    
+    <div className="flex-1 overflow-hidden">
         <ChatSection 
-          handler={handler}
-          className="h-full"
+        handler={handler}
         />
-      </div>
+    </div>
     </div>
   );
 } 
